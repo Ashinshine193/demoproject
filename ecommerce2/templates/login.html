@@ -1,0 +1,39 @@
+{% extends 'navbar.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Login</title>
+{% endblock %}
+
+{% block content %}
+<br><br><br><br><br>
+<section class="main" style="height:80vh;">
+    <section class="main">
+        <div class="container">
+            <form method="post" class="container">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  <input type="text" class="form-control" name="usr_name">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Password</label>
+                  <input type="password" class="form-control" name="pwd">
+                </div>
+                <div>
+                <input type="submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </section>
+</section>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

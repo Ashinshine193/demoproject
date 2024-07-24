@@ -1,0 +1,27 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row" style="margin-top:180px;">
+        <h4 class="text-center fw-bold">Name of Customer:{{u}}</h4>
+        {% for i in orders %}
+
+        <div class="col-5">
+            <img src="{{i.product.image.url }}" width="60%">
+        </div>
+        <div class="col-6 p-4"  style="align-item:center;">
+
+            <hr class="w-25 border border-2 border dark mx-auto">
+            <h5><b>Product Name:</b>{{i.product.name}}</h5>
+             <h5><b>Product Price:</b>{{i.product.price}}</h5>
+             <h5><b>Delivery address:</b>{{i.address}}</h5>
+             <h5><b>Phone Number:</b>{{i.phone}}</h5>
+             <h5><b>no.of.items:</b>{{i.no_of_items}}</h5>
+             <h5><b>Ordered on:</b>{{i.ordered_date}}</h5>
+             <h5><b>Delivery status:</b>{{i.delivery_status}}</h5>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

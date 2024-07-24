@@ -1,0 +1,32 @@
+.form-style
+{
+   margin-top: 200px;
+   margin-left: 250px;
+   border: 1px solid black;
+   width: fit-content;
+   height: 400px;
+   box-shadow: 5px 10px;
+}
+.form
+{
+    padding-top: 10px;
+}
+input
+{
+    margin-bottom: 20px;
+}
+label
+{
+    color:black;
+}
+.btn-v
+{
+    background-color:none;
+    border:1px solid green;
+    border-radius:10px;
+    font-weight:bold;
+}
+.btn-v:hover
+{
+    padding:10px;
+}

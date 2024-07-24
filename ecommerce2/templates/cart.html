@@ -1,0 +1,50 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+<section style="height:80vh">
+	<div class="row">
+		<div class="col-7">
+			<div class="container mt-5 pt-5">
+				<table class="table table-bordered">
+					<tr>
+						<th>Cart Items</th>
+					</tr>
+					{% for i in cart %}
+						<tr>
+							<th><img src="{{i.product.p_image.url}}" height="150px"></th>
+							<th>{{i.product.p_name}}</th>
+							<th>Product Id : {{i.product.id}}</th>
+							<th>Quantity : {{i.quantity}} <br> Unit Price : {{i.product.p_price}}</th>
+							<th>Subtotal : {{i.subtotal}}</th>
+							<th>
+								{% if i.product.p_stock > 0 %}
+									<a href="{% url 'cart:add_to_cart' i.product.id %}"><i class="fa-solid fa-plus"></i></a> <br>
+									<a href="{% url 'cart:cart_minus' i.product.id %}"><i class="fa-solid fa-minus"></i></a> <br>
+									<a href="{% url 'cart:cart_trash' i.product.id i.id %}"><i class="fa-solid fa-trash-can"></i></a>
+								{% else %}
+									<a href="{% url 'cart:cart_minus' i.product.id %}"><i class="fa-solid fa-minus"></i></a> <br>
+									<a href="{% url 'cart:cart_trash' i.product.id i.id %}"><i class="fa-solid fa-trash-can"></i></a>
+								{% endif %}
+							</th>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
+		<div class="col-5">
+			<div class="container mt-5 pt-5">
+				<table class="table table-bordered" style="width:50%;">
+					<tr>
+						<th>CheckOut</th>
+					</tr>
+					<tr>
+						<th>Total Amount : {{total}} </th>
+					</tr>
+				</table>
+				<a href="{% url 'cart:place_order' %}" class="btn stext-103 cl2 size-102 bg1 bor2 hov-btn1 p-lr-15 trans-04">Check Out</a>
+				<a href="{% url 'shop:categories' %}" class="btn stext-103 cl2 size-102 bg1 bor2 hov-btn1 p-lr-15 trans-04">Continue Shopping</a>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

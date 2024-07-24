@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% block content %}
+<br><br><br>
+<section class="main" style="height:80vh;">
+    <section class="main">
+        <center><h3>Registration Form</h3></center>
+            <form method="post"  class="container">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="submit" class="btn btn-primary">
+            </form>
+    </section>
+</section>
+{% endblock %}

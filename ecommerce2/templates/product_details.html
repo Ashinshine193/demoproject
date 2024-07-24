@@ -1,0 +1,52 @@
+{% extends 'navbar.html' %}
+{% load static %}
+{% block content %}
+
+
+
+		<div class="container">
+			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
+				<br><br>
+				<div class="row">
+					<div class="col-md-6 col-lg-6 p-b-30">
+						<div class="p-l-25 p-r-30 p-lr-0-lg">
+							<div class="wrap-slick3 flex-sb flex-w">
+								<div class="slick3 gallery-lb">
+                                    <div class="wrap-pic-w pos-relative">
+                                        <img src="{{ pd.p_image.url }}" alt="IMG-PRODUCT">
+                                    </div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    <div class="col-md-6 col-lg-6 p-b-30">
+						<h3 class="ltext-103 cl5">
+							{{pd.p_name}}
+						</h3>
+						<p class="text-102 cl5">Price :₹ {{pd.p_price}}</p>
+						<p class="text-102 cl4">{{pd.p_desc}}</p>
+						{% if user.is_superuser == True %}
+							{% if pd.p_stock > 0 %}
+								<p class="ltext-102 cl5 text-success">Product in Stock</p>
+								<a href="{% url 'admin:index' %}"><p class="ltext-102 cl3 ">Add Stock</p></a>
+							{% else %}
+								<p class="ltext-102 cl5 text-danger">Out of Stock</p>
+								<a href="{% url 'admin:index' %}"><p class="ltext-102 cl5 ">Add Stock</p></a>
+							{% endif %}
+						{% else %}
+							{% if pd.p_stock > 0 %}
+								<p class="ltext-102 cl5 text-success">Product in Stock</p>
+								<br><br>
+								<a href="#" class="btn flex-c-m stext-103 cl2 size-102 bg1 bor2 hov-btn1 p-lr-15 trans-04">Buy Now</a><br>
+								<a href="{% url 'cart:add_to_cart' pd.id %}" class="btn flex-c-m stext-103 cl2 size-102 bg1 bor2 hov-btn1 p-lr-15 trans-04">Add to Cart</a>
+							{% else %}
+								<p class="ltext-102 cl5 text-danger">Out of Stock</p>
+							{% endif %}
+						{% endif %}
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+{% endblock %}
